@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waldseemüller 1507 — World Map and Globe</title>
+  <style>
+    :root { color-scheme: light; font-family: Georgia, "Times New Roman", serif; color: #1d2a35; background: #f2eee4; }
+    body { margin: 0; }
+    main { max-width: 1680px; margin: 0 auto; padding: 1.5rem; }
+    header { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+    h1 { margin: 0 0 .45rem; font-size: clamp(1.35rem, 2vw, 2rem); font-weight: 600; }
+    p { font-family: system-ui, sans-serif; line-height: 1.5; }
+    .tldr { margin: 0 0 1.25rem; font-size: 1.05rem; }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    td { width: 50%; padding: 0; vertical-align: top; border: 0; }
+    .panel { margin: .35rem; background: #fff; box-shadow: 0 2px 12px #30281922; }
+    figure { margin: 0; }
+    figcaption { padding: .7rem .9rem; font-family: system-ui, sans-serif; font-size: .9rem; color: #4a5862; }
+    .source-map { display: block; width: 100%; height: min(70vh, 760px); object-fit: contain; background: #e7dfcf; }
+    iframe { display: block; width: 100%; height: min(70vh, 760px); border: 0; background: #111; }
+    .links { margin: 1.2rem .35rem 0; }
+    a { color: #075d87; }
+    button { margin-top: .15rem; padding: .5rem .75rem; border: 1px solid #075d87; border-radius: 4px; background: #fff; color: #075d87; font: 600 .9rem system-ui, sans-serif; cursor: pointer; }
+    button:hover, button:focus-visible { background: #075d87; color: #fff; }
+    @media (max-width: 860px) { table, tbody, tr, td { display: block; width: 100%; } .panel { margin: .35rem 0 1rem; } .source-map, iframe { height: 58vh; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Waldseemüller, 1507</h1>
+      <button id="language" type="button" aria-label="Display this page in French">Français</button>
+    </header>
+    <p class="tldr" id="tldr">A rendering of Waldseemüller’s 1507 world map on a terrestrial globe.</p>
+    <table id="comparison" aria-label="Comparison of the 1507 world map and the interactive globe">
+      <tr>
+        <td>
+          <figure class="panel">
+            <img class="source-map" id="source-map" src="Waldseemuller_map.jpg" alt="Martin Waldseemüller's 1507 world map">
+            <figcaption id="map-caption">World map of 1507</figcaption>
+          </figure>
+        </td>
+        <td>
+          <figure class="panel">
+            <iframe id="globe" src="globe_en.html" title="Interactive globe: projection of the 1507 world map" allowfullscreen></iframe>
+            <figcaption id="globe-caption">Interactive globe — drag with a mouse or finger to rotate it.</figcaption>
+          </figure>
+        </td>
+      </tr>
+    </table>
+    <p class="links" id="links">To view only the globe, open <a id="globe-link" href="globe_en.html">the globe page</a>.</p>
+  </main>
+  <script>
+    const copy = {
+      en: {
+        language: 'Français', lang: 'en', buttonLabel: 'Display this page in French',
+        tldr: 'A rendering of Waldseemüller’s 1507 world map on a terrestrial globe.',
+        tableLabel: 'Comparison of the 1507 world map and the interactive globe',
+        alt: "Martin Waldseemüller's 1507 world map", mapCaption: 'World map of 1507',
+        frameTitle: 'Interactive globe: projection of the 1507 world map',
+        globeCaption: 'Interactive globe — drag with a mouse or finger to rotate it.',
+        link: 'To view only the globe, open ', linkText: 'the globe page', globe: 'globe_en.html'
+      },
+      fr: {
+        language: 'English', lang: 'fr', buttonLabel: 'Afficher cette page en anglais',
+        tldr: 'Transposition de la mappemonde de Waldseemüller de 1507 sur un globe terrestre.',
+        tableLabel: 'Comparaison entre la mappemonde de 1507 et le globe interactif',
+        alt: 'Mappemonde de Martin Waldseemüller, 1507', mapCaption: 'Mappemonde de 1507',
+        frameTitle: 'Globe interactif : projection de la mappemonde de 1507',
+        globeCaption: 'Globe interactif — faites-le tourner à la souris ou au doigt.',
+        link: 'Pour afficher seulement le globe, ouvrez ', linkText: 'la page globe.html', globe: 'globe.html'
+      }
+    };
+    let language = 'en';
+    function renderLanguage() {
+      const text = copy[language];
+      document.documentElement.lang = text.lang;
+      document.getElementById('language').textContent = text.language;
+      document.getElementById('language').setAttribute('aria-label', text.buttonLabel);
+      document.getElementById('tldr').textContent = text.tldr;
+      document.getElementById('comparison').setAttribute('aria-label', text.tableLabel);
+      document.getElementById('source-map').alt = text.alt;
+      document.getElementById('map-caption').textContent = text.mapCaption;
+      document.getElementById('globe').title = text.frameTitle;
+      document.getElementById('globe').src = text.globe;
+      document.getElementById('globe-caption').textContent = text.globeCaption;
+      document.getElementById('links').firstChild.textContent = text.link;
+      document.getElementById('globe-link').textContent = text.linkText;
+      document.getElementById('globe-link').href = text.globe;
+    }
+    document.getElementById('language').addEventListener('click', () => {
+      language = language === 'en' ? 'fr' : 'en';
+      renderLanguage();
+    });
+  </script>
+</body>
+</html>
