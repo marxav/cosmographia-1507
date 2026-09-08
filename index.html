@@ -18,8 +18,8 @@
     figure { margin: 0; }
     figcaption { padding: .7rem .9rem; font-family: system-ui, sans-serif; font-size: .9rem; color: #4a5862; }
     .source-map { display: block; width: 100%; height: min(70vh, 760px); object-fit: contain; background: #e7dfcf; }
-    iframe { display: block; width: 100%; height: min(70vh, 760px); border: 0; background: #111; }
-    .links { margin: 1.2rem .35rem 0; }
+    iframe { display: block; width: 100%; height: min(70vh, 760px); border: 0; background: #111; }    .links { margin: 1.2rem .35rem 0; }
+    .license { margin: .8rem .35rem 0; color: #4a5862; font-size: .85rem; }
     a { color: #075d87; }
     button { margin-top: .15rem; padding: .5rem .75rem; border: 1px solid #075d87; border-radius: 4px; background: #fff; color: #075d87; font: 600 .9rem system-ui, sans-serif; cursor: pointer; }
     button:hover, button:focus-visible { background: #075d87; color: #fff; }
@@ -32,12 +32,12 @@
       <h1>Waldseemüller, 1507</h1>
       <button id="language" type="button" aria-label="Display this page in French">Français</button>
     </header>
-    <p class="tldr" id="tldr">A rendering of Waldseemüller’s 1507 world map on a terrestrial globe.</p>
+    <p class="tldr" id="tldr">A rendering of <a href="https://en.wikipedia.org/wiki/Waldseem%C3%BCller_map" target="_blank" rel="noopener">Waldseemüller’s 1507 map</a> on a terrestrial globe.</p>
     <table id="comparison" aria-label="Comparison of the 1507 world map and the interactive globe">
       <tr>
         <td>
           <figure class="panel">
-            <img class="source-map" id="source-map" src="Waldseemuller_map.jpg" alt="Martin Waldseemüller's 1507 world map">
+            <img class="source-map" id="source-map" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Waldseemuller_map_2.jpg/960px-Waldseemuller_map_2.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=thumbnail" alt="Martin Waldseemüller's 1507 world map">
             <figcaption id="map-caption">World map of 1507</figcaption>
           </figure>
         </td>
@@ -49,27 +49,34 @@
         </td>
       </tr>
     </table>
-    <p class="links" id="links">To view only the globe, open <a id="globe-link" href="globe_en.html">the globe page</a>.</p>
+    <p class="links">
+      <span id="globe-only">To view only the globe, open <a id="globe-link" href="globe_en.html">the globe page</a>.</span><br>
+      <span id="map-detail">To view only the 1507 map, open <a href="https://upload.wikimedia.org/wikipedia/commons/c/c0/Waldseemuller_map_2.jpg" target="_blank" rel="noopener">the detailed image</a>.</span><br>
+      <span id="map-2d">To view only the 1507 map on a 2D projection, open <a href="texture_comparaison_sans_labels.png" target="_blank">the 1507 image in 2D</a>.</span>
+    </p>
+    <p class="license" id="license">1507 map image: Martin Waldseemüller (1507), source: Library of Congress via Wikimedia Commons. <a href="https://en.wikipedia.org/wiki/File:Waldseemuller_map_2.jpg" target="_blank" rel="noopener">Public Domain Mark 1.0</a>.</p>
   </main>
   <script>
     const copy = {
       en: {
-        language: 'Français', lang: 'en', buttonLabel: 'Display this page in French',
-        tldr: 'A rendering of Waldseemüller’s 1507 world map on a terrestrial globe.',
+        language: 'Français', lang: 'en', buttonLabel: 'Display this page in French',        tldr: 'A rendering of <a href="https://en.wikipedia.org/wiki/Waldseem%C3%BCller_map" target="_blank" rel="noopener">Waldseemüller’s 1507 map</a> on a terrestrial globe.',
         tableLabel: 'Comparison of the 1507 world map and the interactive globe',
         alt: "Martin Waldseemüller's 1507 world map", mapCaption: 'World map of 1507',
         frameTitle: 'Interactive globe: projection of the 1507 world map',
-        globeCaption: 'Interactive globe — drag with a mouse or finger to rotate it.',
-        link: 'To view only the globe, open ', linkText: 'the globe page', globe: 'globe_en.html'
+        globeCaption: 'Interactive globe — drag with a mouse or finger to rotate it.',        globeOnly: 'To view only the globe, open ', linkText: 'the globe page', globe: 'globe_en.html',
+        mapDetail: 'To view only the 1507 map, open <a href="https://upload.wikimedia.org/wikipedia/commons/c/c0/Waldseemuller_map_2.jpg" target="_blank" rel="noopener">the detailed image</a>.',
+        map2d: 'To view only the 1507 map on a 2D projection, open <a href="texture_comparaison_sans_labels.png" target="_blank">the 1507 image in 2D</a>.',
+        license: '1507 map image: Martin Waldseemüller (1507), source: Library of Congress via Wikimedia Commons. <a href="https://en.wikipedia.org/wiki/File:Waldseemuller_map_2.jpg" target="_blank" rel="noopener">Public Domain Mark 1.0</a>.'
       },
       fr: {
-        language: 'English', lang: 'fr', buttonLabel: 'Afficher cette page en anglais',
-        tldr: 'Transposition de la mappemonde de Waldseemüller de 1507 sur un globe terrestre.',
+        language: 'English', lang: 'fr', buttonLabel: 'Afficher cette page en anglais',        tldr: 'Transposition de la <a href="https://en.wikipedia.org/wiki/Waldseem%C3%BCller_map" target="_blank" rel="noopener">mappemonde de Waldseemüller de 1507</a> sur un globe terrestre.',
         tableLabel: 'Comparaison entre la mappemonde de 1507 et le globe interactif',
         alt: 'Mappemonde de Martin Waldseemüller, 1507', mapCaption: 'Mappemonde de 1507',
         frameTitle: 'Globe interactif : projection de la mappemonde de 1507',
-        globeCaption: 'Globe interactif — faites-le tourner à la souris ou au doigt.',
-        link: 'Pour afficher seulement le globe, ouvrez ', linkText: 'la page globe.html', globe: 'globe.html'
+        globeCaption: 'Globe interactif — faites-le tourner à la souris ou au doigt.',        globeOnly: 'Pour afficher seulement le globe, ouvrez ', linkText: 'la page globe.html', globe: 'globe.html',
+        mapDetail: 'Pour afficher seulement la carte de 1507, ouvrez <a href="https://upload.wikimedia.org/wikipedia/commons/c/c0/Waldseemuller_map_2.jpg" target="_blank" rel="noopener">l’image détaillée</a>.',
+        map2d: 'Pour afficher seulement la carte de 1507 dans une projection 2D, ouvrez <a href="texture_comparaison_sans_labels.png" target="_blank">l’image de 1507 en 2D</a>.',
+        license: 'Image de la carte de 1507 : Martin Waldseemüller (1507), source : Library of Congress via Wikimedia Commons. <a href="https://en.wikipedia.org/wiki/File:Waldseemuller_map_2.jpg" target="_blank" rel="noopener">Marque du domaine public 1.0</a>.'
       }
     };
     let language = 'en';
@@ -77,17 +84,17 @@
       const text = copy[language];
       document.documentElement.lang = text.lang;
       document.getElementById('language').textContent = text.language;
-      document.getElementById('language').setAttribute('aria-label', text.buttonLabel);
-      document.getElementById('tldr').textContent = text.tldr;
+      document.getElementById('language').setAttribute('aria-label', text.buttonLabel);      document.getElementById('tldr').innerHTML = text.tldr;
       document.getElementById('comparison').setAttribute('aria-label', text.tableLabel);
       document.getElementById('source-map').alt = text.alt;
       document.getElementById('map-caption').textContent = text.mapCaption;
       document.getElementById('globe').title = text.frameTitle;
       document.getElementById('globe').src = text.globe;
-      document.getElementById('globe-caption').textContent = text.globeCaption;
-      document.getElementById('links').firstChild.textContent = text.link;
-      document.getElementById('globe-link').textContent = text.linkText;
-      document.getElementById('globe-link').href = text.globe;
+      document.getElementById('globe-caption').textContent = text.globeCaption;      document.getElementById('globe-only').firstChild.textContent = text.globeOnly;
+      document.getElementById('globe-link').textContent = text.linkText;      document.getElementById('globe-link').href = text.globe;
+      document.getElementById('map-detail').innerHTML = text.mapDetail;
+      document.getElementById('map-2d').innerHTML = text.map2d;
+      document.getElementById('license').innerHTML = text.license;
     }
     document.getElementById('language').addEventListener('click', () => {
       language = language === 'en' ? 'fr' : 'en';
